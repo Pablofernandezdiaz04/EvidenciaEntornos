@@ -11,8 +11,26 @@ class Pruebas {
 	CuentaBancaria cb = new CuentaBancaria();
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test1() throws Exception{
+		CuentaBancaria test = new CuentaBancaria();
+		test.agregarSaldo(5000);
+		test.solicitarPrestamo(10000);
+		assertEquals(15000, test.obtenerSaldo());
+	}
+	
+	@Test
+	void test2() throws Exception{
+		CuentaBancaria test = new CuentaBancaria();
+		test.agregarSaldo(2000);
+		test.solicitarPrestamo(12000);
+		assertEquals(6000, test.obtenerPrestamo());
+	}
+	
+	@Test
+	void test3() throws Exception{
+		CuentaBancaria test = new CuentaBancaria();
+		assertThrows(Exception.class, ()-> test.solicitarPrestamo(2000));
+		assertThrows(Exception.class, ()-> test.solicitarPrestamo(4000));
 	}
 
 }
